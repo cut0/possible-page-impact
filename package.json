@@ -1,6 +1,7 @@
 {
   "name": "possible-page-impact",
   "version": "0.0.1",
+  "type": "module",
   "description": "Comment on the possible impact of the PR changes on the page",
   "repository": {
     "type": "git",
@@ -10,5 +11,21 @@
   "keywords": [],
   "author": "Cut0",
   "license": "MIT",
-  "packageManager": "pnpm@8.15.8+sha256.691fe176eea9a8a80df20e4976f3dfb44a04841ceb885638fe2a26174f81e65e"
+  "packageManager": "pnpm@8.15.8+sha256.691fe176eea9a8a80df20e4976f3dfb44a04841ceb885638fe2a26174f81e65e",
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/github": "6.0.0",
+    "depon": "^0.3.0",
+    "minimatch": "^10.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0",
+    "biome": "0.3.3",
+    "esbuild": "0.24.0",
+    "tsx": "4.19.2"
+  },
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "build": "tsx build.ts"
+  }
 }

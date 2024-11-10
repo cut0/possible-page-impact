@@ -1,38 +1,34 @@
 name: 'Possible Page Impact'
 description: 'Comment on the possible impact of the PR changes on the page'
+author: 'Cut0'
+
+github-token:
+  action-input:
+    input: GITHUB_TOKEN
+    is-default: true
+  permissions:
+    pull-requests: write
+    pull-requests-reason: to create or update PR comment
+
 inputs:
-  message:
-    description: 'Message to comment'
+  GITHUB_TOKEN:
+    description: "The GitHub access token (e.g. secrets.GITHUB_TOKEN) used to create or update the comment. This defaults to {{ github.token }}."
+    default: "${{ github.token }}"
     required: false
-    default: 'Hello World'
+  SHA:
+    description: "The SHA of the commit to check the impact of."
+    default: "${{ github.sha }}"
+    required: false
+  app_dir:
+    description: "The application directory of the project."
+    required: true
+  pages_pattern:
+    description: "The glob pattern to match the pages files."
+    required: false
+  pages_regex:
+    description: "The regex to match the pages files."
+    required: false
+
 runs:
-  using: 'composite'
-  steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - uses: pnpm/action-setup@v4
-    - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
-      with:
-        node-version-file: .tool-versions
-    - uses: actions/checkout@v4
-      with:
-        cache: pnpm
-    - name: Install deps
-      run: pnpm install --frozen-lockfile
-    - name: Get list of changed files
-      id: changed_files
-      run: |
-        git diff --name-only origin/${{ github.event.pull_request.base.ref }}..${{ github.sha }} > changed_files.txt
-    # - name: Detect Possible Impact
-    #   id: detect_impact
-    #   run: |
-    #     sed "" changed_files.txt | xargs pnpm --silent detect-impact --sha ${{ github.sha }} > possible-impact.txt
-    - name: Comment diff to PR
-      uses: marocchino/sticky-pull-request-comment@331f8f5b4215f0445d3c07b4967662a32a2d3e31
-      with:
-        number: ${{ github.event.number }}
-        path: changed_files.txt
-        ignore_empty: true
-
-
+  using: "node20"
+  main: "dist/index.cjs"
