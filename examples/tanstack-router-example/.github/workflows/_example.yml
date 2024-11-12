@@ -1,0 +1,16 @@
+name: Example
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  comment-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cut0/possible-page-impact@main
+        with:
+          app_dir: "./src"
+          pages_regex: 'src\/pages\/(?!.*\/-internal\/).*\/index\.(tsx|ts)$'

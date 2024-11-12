@@ -12,10 +12,10 @@ dependencies:
     specifier: 6.0.0
     version: 6.0.0
   depon:
-    specifier: ^0.3.0
+    specifier: 0.3.0
     version: 0.3.0
   minimatch:
-    specifier: ^10.0.1
+    specifier: 10.0.1
     version: 10.0.1
 
 devDependencies:
@@ -31,6 +31,9 @@ devDependencies:
   tsx:
     specifier: 4.19.2
     version: 4.19.2
+  typescript:
+    specifier: 5.6.3
+    version: 5.6.3
 
 packages:
 
@@ -1546,6 +1549,12 @@ packages:
 
   /tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
+    dev: true
+
+  /typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   /undici-types@6.19.8:
