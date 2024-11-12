@@ -44,3 +44,8 @@ Here is an example:
 
 - [Next.js](./examples/next-example/.github/workflows/_example.yml)
 - [TanStack Rotuer](./examples/tanstack-router-example/.github/workflows/_example.yml)
+
+## Supplement
+
+Dependencies between files are analyzed using the AST of import/export statements.
+For this purpose, https://github.com/cut0/depon is used internally.
